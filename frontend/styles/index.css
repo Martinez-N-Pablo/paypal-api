@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+body{
+    font-family: poppins;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #5222d0;
+    background-image: linear-gradient(45deg, #5222d0 0%, #ec615b 100%);
+}
+
+div.tittle{
+    text-align: center;
+    margin: 5% auto;
+    text-transform: bold;
+}
+
+div.tittle h1{
+    font-size: 58px;
+}
+
+div.tittle p{
+    margin-top: 1%;
+    font-size: 22px;
+}
+
+.wrapper {
+    width: 900px;
+    margin: 5% auto;
+}
+
+.single-price{
+    width: 30%;
+    background: #262626;
+    float: left;
+    margin: 2% 1%;
+    box-shadow: 1px 1px 20px rgba(0,0,0,.5);
+    text-align: center;
+    transition: .9s;
+}
+
+.price{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #da4357;
+    margin: 5% auto 0 auto;
+    text-align: center;
+}
+
+.deals{
+    margin-top: 10%;
+}
+
+.single-price h1{
+    font-size: 26px;
+    color: #fff;
+    line-height: 3;
+    text-transform: uppercase;
+}
+
+.price h2{
+    margin-top: 22%;
+    font-size: 53px;
+    color: #fff;
+}
+
+.deals{
+    margin-top: 3em;
+}
+
+.deals h4{
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+    color: #fff;
+    line-height: 1;
+    margin: 10%;
+}
+
+.single-price:hover{
+    background: #da4357;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,1);
+    transform: scale(1.1);
+    z-index: 1;
+    border-radius: 25px;
+}
+
+.single-price:hover .price{
+    border-color: #fff;
+}
+
+.single-price a{
+    text-decoration: none;
+    background-color: #da4357;
+    color: #fff;
+    padding: 10px 60px;
+    display: inline-block;
+    margin: 10% auto;
+    text-transform: uppercase;
+    text-transform: bold;
+    border-radius: 25px;
+}
+
+.single-price:hover a{
+    background: #262626;
+    color: #fff;
+}

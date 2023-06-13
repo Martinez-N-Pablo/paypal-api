@@ -1,10 +1,10 @@
 //Frameworks
 const express = require('express');
 const cors = require('cors');
-require('dotenv').config()
+require('dotenv').config({path: '../.env'})
 
 //Import database
-const { dbConnection } = require('./database/configdb')
+const { dbConnection } = require('./api/v0.1/database/configdb')
 
 const app = express();
 
