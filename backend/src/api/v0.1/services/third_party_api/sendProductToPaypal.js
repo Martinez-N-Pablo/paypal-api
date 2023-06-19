@@ -23,13 +23,10 @@ module.exports.sendProductToPaypal = (postProductToDB, { url, product }) => {
               console.log(err);
               reject(new Error('Error al conectarse con la API de PayPal'));
             }
-    
-            if (response.statusCode >= 200 && response.statusCode < 300) {
-              // La subimos a la base de datos
-              const newProduct = await postProductToDB(product);
-    
+
+            if (response.statusCode >= 200 && response.statusCode < 300) {    
               // Devolvemos el producto creado
-              resolve(newProduct);
+              resolve(response.body.id);
             } else {
               reject(new Error('Failed to create product'));
             }

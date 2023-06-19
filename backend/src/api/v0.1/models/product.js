@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const ProductSchema = Schema({
+    hash: {
+        type: String,
+        default: ''
+    },
     name: {
         type: String,
         require: true,

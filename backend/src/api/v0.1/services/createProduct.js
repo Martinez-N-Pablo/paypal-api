@@ -18,5 +18,15 @@ module.exports.createProduct = (async (postProductToDB, {name, description}) => 
 
     const product = new Product(productData);
 
-    return await sendProductToPaypal(postProductToDB, {url: config.PaypalAPI, product});
+    const idProduct = await sendProductToPaypal(postProductToDB, {url: config.PaypalAPI, product});
+
+    product.hash = idProduct;
+    
+    // La subimos a la base de datos
+    if(idProduct){
+        return await postProductToDB(product);
+    }
+    else{
+        return false;
+    }
 })

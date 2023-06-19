@@ -17,19 +17,19 @@ module.exports.createProductController = (async (req, res = response) => {
         if(product){
             res.json({
                 status: 201,
-                msg: 'Product created succesfully',
+                message: 'Product created succesfully',
                 product
             });
         }
         else{
             res.status(404).json({
-                msg: 'Error al realizar la peticion a Paypal'
+                message: 'Error al realizar la peticion a Paypal'
             })
         }
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            msg: 'Failed to create product'
+            message: 'Failed to create product'
         });
     }
 })
