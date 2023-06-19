@@ -4,9 +4,9 @@
  *      foto.png
  *      indes.js
  * Y devuelve el nombre del fichero sin la extension
- * @param {*} file 
- * @returns String
+ * @param {file} 
+ * @returns string
  */
-const removeExtension = file =>  file.split('.').shift()
+const removeExtension = file =>  file.split('.').shift();
 
-module.exports = removeExtension
+module.exports = removeExtension;

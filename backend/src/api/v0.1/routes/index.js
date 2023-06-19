@@ -1,22 +1,22 @@
-const { Router } = require('express')
-const fs = require('fs')
-const removeExtension = require('../scripts/removeExtension')
+const { Router } = require('express');
+const fs = require('fs');
+const removeExtension = require('../scripts/removeExtension');
 
-const router = Router()
+const router = Router();
 
 //Obtenemos la ruta del directorio en la que se encuentra este archivo
-const pathRouter = `${__dirname}`
+const pathRouter = `${__dirname}`;
 
 /**
  * Lee todos los archivos que se encuentran en este directorio
  */
 fs.readdirSync(pathRouter).filter((file) => {
     //Eliminamos la extension del archivo
-    const fileWithoutExt = removeExtension(file)
+    const fileWithoutExt = removeExtension(file);
     //Si el archivo no esta en la lista de no incluidos y existe, le pasamos la ruta
-    const skip = ['routesIndex'].includes(fileWithoutExt)
+    const skip = ['index'].includes(fileWithoutExt);
     if(!skip){
-        router.use(`/${fileWithoutExt}`, require(`./${fileWithoutExt}`))
+        router.use(`/${fileWithoutExt}`, require(`./${fileWithoutExt}`));
     }
 })
 
@@ -24,10 +24,10 @@ fs.readdirSync(pathRouter).filter((file) => {
 router.get('*', (req, res) => {
     res.status(404).json({
         error: `Ruta no encontrada`
-    })
+    });
 })
 
-module.exports = router
+module.exports = router;
 
 
 
