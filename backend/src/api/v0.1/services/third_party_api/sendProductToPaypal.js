@@ -6,7 +6,7 @@ const request = require("request")
  * @param {product} -> Object with the data 
  * @returns {product | false}
  */
-module.exports.sendProductToPaypal = (postProductToDB, { url, product }) => {
+module.exports.sendProductToPaypal = ({ url, product }) => {
     return new Promise((resolve, reject) => {
         request.post(
           `${url}/v1/catalogs/products`,
@@ -25,7 +25,7 @@ module.exports.sendProductToPaypal = (postProductToDB, { url, product }) => {
             }
 
             if (response.statusCode >= 200 && response.statusCode < 300) {    
-              // Devolvemos el producto creado
+              // Devolvemos el id del producto creado
               resolve(response.body.id);
             } else {
               reject(new Error('Failed to create product'));

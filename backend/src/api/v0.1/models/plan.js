@@ -1,29 +1,35 @@
-const { Schema, model, SchemaType } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
 const PlanSchema = Schema({
+    hash: {
+        type: String,
+        default: ''
+    },
     name: {
         type: String,
         require: true,
         default: 'Plan Mensual'
     },
     product_id: {
-        type: Schema.Types.ObjectId,
-        ref: 'Producto',
+        type: String,
         required: true
+    },
+    description: {
+        type: String,
+        default: 'Servicio de Plan Básico'
     },
     status: {
         type: String,
-        default: 'ACTIVE',
-        uppercase:true
+        default: 'ACTIVE'
     },
     billing_cycles: [{
-        frequency:{
-            interval_unit:{
+        frequency: {
+            interval_unit: {
                 type: String,
                 default: 'MONTH',
                 uppercase:true
             },
-            interval_count:{
+            interval_count: {
                 type: Number,
                 min: 1,
                 default: 1
@@ -32,7 +38,7 @@ const PlanSchema = Schema({
         tenure_type: {
             type: String,
             default: 'REGULAR',
-            uppercase:true
+            uppercase: true
         },
         sequence: {
             type: Number,
@@ -50,11 +56,11 @@ const PlanSchema = Schema({
                 value: {
                     type: Number,
                     min: 0,
-                    default: 1
+                    default: 10
                 },
                 currency_code: {
                     type: String,
-                    default: 'USD',
+                    default: 'EUR',
                     uppercase:true
                 }
             }
@@ -65,19 +71,22 @@ const PlanSchema = Schema({
             type: Boolean,
             default: true
         },
-        setup_fee: {
-            value: String,
+       /*  setup_fee: {
+            value: {
+                type: String,
+                default: "10"
+            },
             currency_code: {
-                typeof: String,
-                default: 'USD',
-                uppercase:true
+                type: String,
+                default: 'EUR',
+                uppercase: true
             }
         },
         setup_fee_failure_action: {
             type: String,
-            default: 'CONTINUE',
-            uppercase:true
-        },
+            default: 'CANCEL',
+            uppercase: true
+        }, */
         payment_failure_threshold: {
             type: Number,
             default: 3
@@ -88,20 +97,21 @@ const PlanSchema = Schema({
             type: String,
             default: "21"
         },
-        inclusive: Boolean
+        inclusive: {
+            type: Boolean,
+            default: true
+        }
     }
 },{
+    timestamps: true,
     collection: 'Plan'
-})
+});
 
 PlanSchema.method('toJSON', function() {
     const { __v, _id, ...object } = this.toObject();
 
     object.uid = _id;
     return object;
-})
+});
 
-const modelPlan = model('Plan', PlanSchema)
-
-
-module.exports = { modelPlan }
+module.exports = model('Plan', PlanSchema);

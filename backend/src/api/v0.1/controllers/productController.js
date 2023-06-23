@@ -29,7 +29,7 @@ module.exports.createProductController = (async (req, res = response) => {
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            message: 'Failed to create product'
+            message: 'Failed to create Paypal Product'
         });
     }
 })

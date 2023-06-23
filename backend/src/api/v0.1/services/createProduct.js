@@ -1,5 +1,5 @@
 const config = require('../../../config/config');
-const Product = require('../models/product')
+const Product = require('../models/product');
 const { sendProductToPaypal } = require('../services/third_party_api/sendProductToPaypal')
 
 /**
@@ -18,7 +18,7 @@ module.exports.createProduct = (async (postProductToDB, {name, description}) => 
 
     const product = new Product(productData);
 
-    const idProduct = await sendProductToPaypal(postProductToDB, {url: config.PaypalAPI, product});
+    const idProduct = await sendProductToPaypal({url: config.PaypalAPI, product});
 
     product.hash = idProduct;
     
@@ -29,4 +29,4 @@ module.exports.createProduct = (async (postProductToDB, {name, description}) => 
     else{
         return false;
     }
-})
+});
